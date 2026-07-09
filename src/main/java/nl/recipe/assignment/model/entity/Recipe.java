@@ -24,6 +24,8 @@ public class Recipe {
 
     private Integer servings;
 
+    private Boolean vegetarian;
+
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients;
 

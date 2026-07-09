@@ -10,6 +10,7 @@ public record RecipeRequest(
         String description,
         Integer servings,
         @NotNull(message = "Author is required") Integer authorId,
+
         List<Integer> contributorIds,
-        @Valid List<IngredientRequest> ingredients
+        List<@Valid IngredientRequest> ingredients
 ) { }

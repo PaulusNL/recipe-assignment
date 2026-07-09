@@ -29,6 +29,7 @@ public interface DomainMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "roles", ignore = true)
     @Mapping(target = "ingredients", ignore = true)
+    @Mapping(target = "vegetarian", ignore = true)
     Recipe toEntity(RecipeRequest request);
 
     IngredientDto toIngredientDto(Ingredient ingredient);
