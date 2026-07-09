@@ -3,8 +3,10 @@ package nl.recipe.assignment.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import nl.recipe.assignment.model.dto.RecipeDto;
+import nl.recipe.assignment.model.dto.RecipeRequest;
 import nl.recipe.assignment.service.RecipeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,21 +37,26 @@ public class RecipeController {
     }
 
     @Operation(summary = "Create a new recipe")
-    @ApiResponse(responseCode = "201", description = "Recipe created")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Recipe created"),
+            @ApiResponse(responseCode = "400", description = "Invalid request")
+    })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RecipeDto createRecipe(@RequestBody RecipeDto recipeDto) {
-        return recipeService.createRecipe(recipeDto);
+    public RecipeDto createRecipe(final @Valid @RequestBody RecipeRequest request) {
+        return recipeService.createRecipe(request);
     }
 
     @Operation(summary = "Update an existing recipe")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Recipe updated"),
+            @ApiResponse(responseCode = "400", description = "Invalid request"),
             @ApiResponse(responseCode = "404", description = "Recipe not found")
     })
     @PutMapping("/{id}")
-    public ResponseEntity<RecipeDto> updateRecipe(@PathVariable Integer id, @RequestBody RecipeDto recipeDto) {
-        return recipeService.updateRecipe(id, recipeDto)
+    public ResponseEntity<RecipeDto> updateRecipe(final @PathVariable Integer id,
+                                                  final @Valid @RequestBody RecipeRequest request) {
+        return recipeService.updateRecipe(id, request)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -58,7 +65,7 @@ public class RecipeController {
     @ApiResponse(responseCode = "204", description = "Recipe deleted")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRecipe(@PathVariable Integer id) {
+    public void deleteRecipe(final @PathVariable Integer id) {
         recipeService.deleteRecipe(id);
     }
 

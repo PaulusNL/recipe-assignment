@@ -1,6 +1,8 @@
 package nl.recipe.assignment.model.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,5 +32,6 @@ public class Role {
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
 }

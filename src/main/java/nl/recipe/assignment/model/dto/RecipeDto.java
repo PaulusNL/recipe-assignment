@@ -7,5 +7,7 @@ public record RecipeDto(
         String name,
         String description,
         Integer servings,
+        UserDto author,
+        List<UserDto> contributors,
         List<IngredientDto> ingredients
 ) { }

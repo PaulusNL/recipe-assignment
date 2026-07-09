@@ -22,7 +22,8 @@ Note this was image was created at start as a preparation and differs from imple
 - ~~Sample service + controller~~
 - ~~Implement data model + repositories~~
 - ~~Implement GET + POST + PUT + DELETE methods~~
-- Add validations for input sanitation
+- ~~Add author and contributor~~
+- ~~Add validations for input sanitation~~
 - Implement filtering
 - Implement pagination
 
@@ -48,7 +49,18 @@ and volume of given product.
 - I have not included profiles but in a real-production scenario deploying on Azure this is required. For example when loading
 the test data. Should be done locally (perhaps a test/staging environment) only.
 - A project like this that grows could use a better structure like Entity - POJO - DTO. It's overkill for now since this 
-is a relatively simple repo so I took just Entity - DTO instaed.
+is a relatively simple repo so I took just Entity - DTO instead.
 - Realised ingredient and amount would fit better instead of product-list and volume. 
 - The new proposed HTTP Query method (RFC 10008) solves a lot of issues with long attributes on URLs and the endless GET/POST/PUT 
-discussion. Would solve search, filter and pagination a lot better. 
+discussion. Would solve search, filter and pagination a lot better.
+- In a user interface I imagine a user creating a recipe by adding a product and then inserting the amount. I won't add dynamic
+creation for products right now and instead focus on the recipes. But basically the ingredient list could contain both existing 
+and new products. New should be saved first and then the recipe should include them to the final save.
+- I am sending back Optionals out of the RecipeService. I made no business validation in here due to time constraints, but 
+what should be added is a validation error instead. Now it simply returns an empty and then the response out of the API is 
+a Bad Request with no further information for the implementer.
+- I've chosen to extract author as an attribute of the Recipe instead of a user list. This allows me to enforce always one
+author and 0-n contributors. Tradeoff is some more coding to translate the request into entity, but worth it for both implementer
+and validation path I think.
+- Ideally i'd split further the repository layers from service layers. For instance the RecipeService now does Entity building
+and speaking to the repository. Fine for this assignment but should be different layers. 
