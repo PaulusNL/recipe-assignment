@@ -3,11 +3,13 @@ package nl.recipe.assignment;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import static org.springframework.boot.SpringApplication.*;
+
 @SpringBootApplication
 public class AssignmentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AssignmentApplication.class, args);
+		run(AssignmentApplication.class, args);
 	}
 
 }
