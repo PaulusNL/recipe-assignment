@@ -20,9 +20,11 @@ Note this was image was created at start as a preparation and differs from imple
 - ~~Create the data model~~
 - ~~Have liquibase load the database and model (h2)~~
 - ~~Sample service + controller~~
-- Implement data model + repositories
-- Implement GET + POST + PUT + DELETE methods
+- ~~Implement data model + repositories~~
+- ~~Implement GET + POST + PUT + DELETE methods~~
+- Add validations for input sanitation
 - Implement filtering
+- Implement pagination
 
 Side note: along the way we'll keep the API documented and tests up-to-date.
 Side note: we'll have no UI for the assignment, so I'll include some sample requests that can be fired instead.
@@ -48,4 +50,5 @@ the test data. Should be done locally (perhaps a test/staging environment) only.
 - A project like this that grows could use a better structure like Entity - POJO - DTO. It's overkill for now since this 
 is a relatively simple repo so I took just Entity - DTO instaed.
 - Realised ingredient and amount would fit better instead of product-list and volume. 
-
+- The new proposed HTTP Query method (RFC 10008) solves a lot of issues with long attributes on URLs and the endless GET/POST/PUT 
+discussion. Would solve search, filter and pagination a lot better. 

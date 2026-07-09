@@ -10,3 +10,8 @@ INSERT INTO product (id, name, vegetarian) VALUES (3, 'Egg', FALSE);
 INSERT INTO ingredient (id, recipe_id, product_id, amount) VALUES (1, 1, 1, '250gr');
 INSERT INTO ingredient (id, recipe_id, product_id, amount) VALUES (2, 1, 2, '1L');
 INSERT INTO ingredient (id, recipe_id, product_id, amount) VALUES (3, 1, 3, '3');
+
+-- Update the counters for primary key id generation (keep at bottom).
+ALTER TABLE recipe ALTER COLUMN id RESTART WITH 2;
+ALTER TABLE product ALTER COLUMN id RESTART WITH 4;
+ALTER TABLE ingredient ALTER COLUMN id RESTART WITH 4;
