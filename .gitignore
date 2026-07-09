@@ -26,3 +26,4 @@ replay_pid*
 # IDE folder
 /.idea/
 *.iml
+/target/

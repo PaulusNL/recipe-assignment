@@ -37,6 +37,10 @@ should be kept not the last contributor.
 - Assignment does not speak about volumes of the products. The current data model simply has the products linked with the recipe.
 This can be enhanced by introducing a join table such as product_list can be introduced. This could contain the recipe, product
 and volume of given product. 
-- 
+- I have not included profiles but in a real-production scenario deploying on Azure this is required. For example when loading
+the test data. Should be done locally (perhaps a test/staging environment) only.
+- A project like this that grows could use a better structure like Entity - POJO - DTO. It's overkill for now since this 
+is a relatively simple repo so I took just Entity - DTO instaed. 
+
 ## Data model
 ![img.png](img.png)
