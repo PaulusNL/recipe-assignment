@@ -9,12 +9,18 @@ to a recipe should receive notifications about the recipe.
 TODO: Description of how this can be publicly running on Azure.
 TODO: Describe how a notification service can be included in the future (sending notifications to all contributors of the recipe) 
 
+## API structure and documentation
+Visit http://localhost:8080/swagger-ui.html for the full API documentation.
+
+## Data model
+Note this was image was created at start as a preparation and differs from implementation slightly.
+![img.png](img.png)
 
 ## Task list
-~~- Create the data model~~
-- Have liquibase load the database and model (h2)
+- ~~Create the data model~~
+- ~~Have liquibase load the database and model (h2)~~
+- ~~Sample service + controller~~
 - Implement data model + repositories
-- Sample service + controller
 - Implement GET + POST + PUT + DELETE methods
 - Implement filtering
 
@@ -40,7 +46,6 @@ and volume of given product.
 - I have not included profiles but in a real-production scenario deploying on Azure this is required. For example when loading
 the test data. Should be done locally (perhaps a test/staging environment) only.
 - A project like this that grows could use a better structure like Entity - POJO - DTO. It's overkill for now since this 
-is a relatively simple repo so I took just Entity - DTO instaed. 
+is a relatively simple repo so I took just Entity - DTO instaed.
+- Realised ingredient and amount would fit better instead of product-list and volume. 
 
-## Data model
-![img.png](img.png)
